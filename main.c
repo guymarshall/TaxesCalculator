@@ -59,5 +59,12 @@ int main(int argc, char const *argv[])
 
     // Grand Total
 
+    int grand_total_payable_pence = income_tax_band_total_payable + national_insurance_tax_band_total_payable;
+    int grand_total_payable_pounds = grand_total_payable_pence / 100;
+
+    printf("Income Tax: %dp\n", income_tax_band_total_payable);
+    printf("National Insurance Tax: %dp\n", national_insurance_tax_band_total_payable);
+    printf("Total: £%d\n", grand_total_payable_pounds);
+
     return 0;
 }
