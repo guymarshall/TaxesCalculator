@@ -29,7 +29,10 @@ int main(int argc, char const *argv[])
     int income_tax_band_higher_subject_to_tax_in_band = min(income_tax_band_higher_ceiling, (monthly_salary - income_tax_band_allowances_subject_to_tax_in_band - income_tax_band_basic_subject_to_tax_in_band));
     int income_tax_band_above_subject_to_tax_in_band = monthly_salary - income_tax_band_allowances_subject_to_tax_in_band - income_tax_band_basic_subject_to_tax_in_band - income_tax_band_higher_subject_to_tax_in_band;
 
-    
+    int income_tax_band_allowances_tax_payable_in_band = income_tax_band_allowances_rate * income_tax_band_allowances_subject_to_tax_in_band;
+    int income_tax_band_basic_tax_payable_in_band = income_tax_band_basic_rate * income_tax_band_basic_subject_to_tax_in_band;
+    int income_tax_band_higher_tax_payable_in_band = income_tax_band_higher_rate * income_tax_band_higher_subject_to_tax_in_band;
+    int income_tax_band_above_tax_payable_in_band = income_tax_band_above_rate * income_tax_band_above_subject_to_tax_in_band;
 
     return 0;
 }
