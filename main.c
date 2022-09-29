@@ -1,5 +1,10 @@
 #include <stdio.h>
 
+int min(int a, int b)
+{
+    return (a > b) ? b : a;
+}
+
 int main(int argc, char const *argv[])
 {
     printf("Enter monthly salary in pence: ");
