@@ -22,7 +22,7 @@ int main(int argc, char const *argv[])
 
     int income_tax_band_allowances_ceiling = PERSONAL_ALLOWANCE / PERIODS_IN_YEAR;
     int income_tax_band_basic_ceiling = (5027000-PERSONAL_ALLOWANCE) / PERIODS_IN_YEAR;
-    int income_tax_band_higher_ceiling = (15000000 - 50271) / PERIODS_IN_YEAR;
+    int income_tax_band_higher_ceiling = (15000000 - 5027100) / PERIODS_IN_YEAR;
 
     int income_tax_band_allowances_subject_to_tax_in_band = min(income_tax_band_allowances_ceiling, monthly_salary);
     int income_tax_band_basic_subject_to_tax_in_band = min(income_tax_band_basic_ceiling, (monthly_salary - income_tax_band_allowances_subject_to_tax_in_band));
