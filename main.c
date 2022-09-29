@@ -47,14 +47,12 @@ int main(int argc, char const *argv[])
     int national_insurance_tax_band_primary_threshold_width = 104800;
     int national_insurance_tax_band_upper_earnings_limit_width = 418900;
 
-    int national_insurance_tax_band_allowances_subject_to_tax_in_band = ;
-    int national_insurance_tax_band_basic_subject_to_tax_in_band = ;
-    int national_insurance_tax_band_higher_subject_to_tax_in_band = ;
+    int national_insurance_tax_band_primary_threshold_subject_to_tax_in_band = ;
+    int national_insurance_tax_band_upper_earnings_limit_subject_to_tax_in_band = ;
     int national_insurance_tax_band_above_subject_to_tax_in_band = ;
 
-    int national_insurance_tax_band_allowances_tax_payable_in_band = ;
-    int national_insurance_tax_band_basic_tax_payable_in_band = ;
-    int national_insurance_tax_band_higher_tax_payable_in_band = ;
+    int national_insurance_tax_band_primary_threshold_tax_payable_in_band = ;
+    int national_insurance_tax_band_upper_earnings_limit_tax_payable_in_band = ;
     int national_insurance_tax_band_above_tax_payable_in_band = ;
 
     int national_insurance_tax_band_total_payable = ;
