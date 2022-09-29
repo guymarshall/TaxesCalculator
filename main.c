@@ -47,15 +47,17 @@ int main(int argc, char const *argv[])
     int national_insurance_tax_band_primary_threshold_width = 104800;
     int national_insurance_tax_band_upper_earnings_limit_width = 418900;
 
-    int national_insurance_tax_band_primary_threshold_subject_to_tax_in_band = ;
-    int national_insurance_tax_band_upper_earnings_limit_subject_to_tax_in_band = ;
-    int national_insurance_tax_band_above_subject_to_tax_in_band = ;
+    int national_insurance_tax_band_primary_threshold_subject_to_tax_in_band = min(national_insurance_tax_band_primary_threshold_width, monthly_salary);
+    int national_insurance_tax_band_upper_earnings_limit_subject_to_tax_in_band = min(national_insurance_tax_band_upper_earnings_limit_width, (monthly_salary - national_insurance_tax_band_primary_threshold_subject_to_tax_in_band));
+    int national_insurance_tax_band_above_subject_to_tax_in_band = monthly_salary - national_insurance_tax_band_primary_threshold_subject_to_tax_in_band - national_insurance_tax_band_upper_earnings_limit_subject_to_tax_in_band;
 
-    int national_insurance_tax_band_primary_threshold_tax_payable_in_band = ;
-    int national_insurance_tax_band_upper_earnings_limit_tax_payable_in_band = ;
-    int national_insurance_tax_band_above_tax_payable_in_band = ;
+    int national_insurance_tax_band_primary_threshold_tax_payable_in_band = national_insurance_tax_band_primary_threshold_rate * national_insurance_tax_band_primary_threshold_subject_to_tax_in_band;
+    int national_insurance_tax_band_upper_earnings_limit_tax_payable_in_band = national_insurance_tax_band_upper_earnings_limit_rate * national_insurance_tax_band_upper_earnings_limit_subject_to_tax_in_band;
+    int national_insurance_tax_band_above_tax_payable_in_band = national_insurance_tax_band_above_rate * national_insurance_tax_band_above_subject_to_tax_in_band;
 
-    int national_insurance_tax_band_total_payable = ;
+    int national_insurance_tax_band_total_payable = national_insurance_tax_band_primary_threshold_tax_payable_in_band * national_insurance_tax_band_upper_earnings_limit_tax_payable_in_band * national_insurance_tax_band_above_tax_payable_in_band;
+
+    // Grand Total
 
     return 0;
 }
