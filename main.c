@@ -61,20 +61,18 @@ int main(int argc, char const *argv[])
 
     double national_insurance_bands[4][3] =
     {
-        {12570.0 / 12,              0.00, 0.00},    // allowances
-        {(50270.0 - 12570.0) / 12,  0.20, 0.00},    // basic
-        {(150000.0 - 50270.0) / 12, 0.40, 0.00},    // higher
-        {-1.0,                      0.45, 0.00}     // above
+        {1048,  0.00, 0.00},    // primary threshold
+        {4189,  0.1325, 0.00},  // upper earnings limit
+        {-1.0,  0.0325, 0.00}   // above
     };
 
     double income_tax = calculate_tax(income_tax_bands, monthly_salary);
+    double national_insurance_tax = calculate_tax(national_insurance_bands, monthly_salary);
+    double total_tax = income_tax + national_insurance_tax;
 
-    printf("Income tax: %lf\n", income_tax);
-
-
-
-
-
+    printf("Income Tax: %lfp\n", income_tax);
+    printf("National Insurance Tax: %lfp\n", national_insurance_tax);
+    printf("Total: £%lf\n", total_tax);
 
     // double income_allowances_rate = 0.0;
     // double income_basic_rate = 0.2;
