@@ -36,17 +36,17 @@ int main(int argc, char const *argv[])
     int income_basic_ceiling = (5027000-PERSONAL_ALLOWANCE) / PERIODS_IN_YEAR;
     int income_higher_ceiling = (15000000 - 5027100) / PERIODS_IN_YEAR;
 
-    int income_allowances_subject_to_tax_in_band = min(income_allowances_ceiling, monthly_salary);
-    int income_basic_subject_to_tax_in_band = min(income_basic_ceiling, (monthly_salary - income_allowances_subject_to_tax_in_band));
-    int income_higher_subject_to_tax_in_band = min(income_higher_ceiling, (monthly_salary - income_allowances_subject_to_tax_in_band - income_basic_subject_to_tax_in_band));
-    int income_above_subject_to_tax_in_band = max(0, monthly_salary - income_allowances_subject_to_tax_in_band - income_basic_subject_to_tax_in_band - income_higher_subject_to_tax_in_band);
+    int income_allowances_subject_to_tax = min(income_allowances_ceiling, monthly_salary);
+    int income_basic_subject_to_tax = min(income_basic_ceiling, (monthly_salary - income_allowances_subject_to_tax));
+    int income_higher_subject_to_tax = min(income_higher_ceiling, (monthly_salary - income_allowances_subject_to_tax - income_basic_subject_to_tax));
+    int income_above_subject_to_tax = max(0, monthly_salary - income_allowances_subject_to_tax - income_basic_subject_to_tax - income_higher_subject_to_tax);
 
-    int income_allowances_tax_payable_in_band = income_allowances_rate * income_allowances_subject_to_tax_in_band;
-    int income_basic_tax_payable_in_band = income_basic_rate * income_basic_subject_to_tax_in_band;
-    int income_higher_tax_payable_in_band = income_higher_rate * income_higher_subject_to_tax_in_band;
-    int income_above_tax_payable_in_band = income_above_rate * income_above_subject_to_tax_in_band;
+    int income_allowances_tax_payable = income_allowances_rate * income_allowances_subject_to_tax;
+    int income_basic_tax_payable = income_basic_rate * income_basic_subject_to_tax;
+    int income_higher_tax_payable = income_higher_rate * income_higher_subject_to_tax;
+    int income_above_tax_payable = income_above_rate * income_above_subject_to_tax;
 
-    int income_total_payable = income_allowances_tax_payable_in_band + income_basic_tax_payable_in_band + income_higher_tax_payable_in_band + income_above_tax_payable_in_band;
+    int income_total_payable = income_allowances_tax_payable + income_basic_tax_payable + income_higher_tax_payable + income_above_tax_payable;
 
     // National Insurance Tax Band
 
@@ -57,15 +57,15 @@ int main(int argc, char const *argv[])
     int national_insurance_primary_threshold_width = 104800;
     int national_insurance_upper_earnings_limit_width = 418900;
 
-    int national_insurance_primary_threshold_subject_to_tax_in_band = min(national_insurance_primary_threshold_width, monthly_salary);
-    int national_insurance_upper_earnings_limit_subject_to_tax_in_band = min(national_insurance_upper_earnings_limit_width, (monthly_salary - national_insurance_primary_threshold_subject_to_tax_in_band));
-    int national_insurance_above_subject_to_tax_in_band = monthly_salary - national_insurance_primary_threshold_subject_to_tax_in_band - national_insurance_upper_earnings_limit_subject_to_tax_in_band;
+    int national_insurance_primary_threshold_subject_to_tax = min(national_insurance_primary_threshold_width, monthly_salary);
+    int national_insurance_upper_earnings_limit_subject_to_tax = min(national_insurance_upper_earnings_limit_width, (monthly_salary - national_insurance_primary_threshold_subject_to_tax));
+    int national_insurance_above_subject_to_tax = monthly_salary - national_insurance_primary_threshold_subject_to_tax - national_insurance_upper_earnings_limit_subject_to_tax;
 
-    int national_insurance_primary_threshold_tax_payable_in_band = national_insurance_primary_threshold_rate * national_insurance_primary_threshold_subject_to_tax_in_band;
-    int national_insurance_upper_earnings_limit_tax_payable_in_band = national_insurance_upper_earnings_limit_rate * national_insurance_upper_earnings_limit_subject_to_tax_in_band;
-    int national_insurance_above_tax_payable_in_band = national_insurance_above_rate * national_insurance_above_subject_to_tax_in_band;
+    int national_insurance_primary_threshold_tax_payable = national_insurance_primary_threshold_rate * national_insurance_primary_threshold_subject_to_tax;
+    int national_insurance_upper_earnings_limit_tax_payable = national_insurance_upper_earnings_limit_rate * national_insurance_upper_earnings_limit_subject_to_tax;
+    int national_insurance_above_tax_payable = national_insurance_above_rate * national_insurance_above_subject_to_tax;
 
-    int national_insurance_total_payable = national_insurance_primary_threshold_tax_payable_in_band + national_insurance_upper_earnings_limit_tax_payable_in_band + national_insurance_above_tax_payable_in_band;
+    int national_insurance_total_payable = national_insurance_primary_threshold_tax_payable + national_insurance_upper_earnings_limit_tax_payable + national_insurance_above_tax_payable;
 
     // Grand Total
 
