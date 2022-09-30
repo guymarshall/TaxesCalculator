@@ -13,8 +13,8 @@ int max(int a, int b)
 int main(int argc, char const *argv[])
 {
     printf("Enter monthly salary in pence: ");
-    int monthly_salary;
-    scanf("%d", &monthly_salary);
+    double monthly_salary;
+    scanf("%f", &monthly_salary);
 
     const int PERIODS_IN_YEAR = 12;
     const int PERSONAL_ALLOWANCE = 12570;
@@ -26,6 +26,36 @@ int main(int argc, char const *argv[])
     }
 
     // Income Tax Band
+
+    double bands[4][3] =
+    {
+        {12570.0 / 12,              0.00, 0.00}, // allowances
+        {(50270.0 - 12570.0) / 12,  0.20, 0.00}, // basic
+        {(150000.0 - 50270.0) / 12, 0.40, 0.00}, // higher
+        {-1.0,                      0.45, 0.00} // above
+    };
+
+    double running_pay = monthly_salary;
+    double running_income_tax = 0.0;
+
+    for (int i = 0; i < 4; i++)
+    {
+        if (bands[i][0] >= 0.0)
+        {
+            bands[i][2] = min(running_pay, bands[i][0]);
+        }
+        else
+        {
+            bands[i][2] = running_pay;
+        }
+        running_pay -= bands[i][2];
+        running_income_tax += bands[i][1] * bands[i][2];
+    }
+
+
+
+
+
 
     double income_allowances_rate = 0.0;
     double income_basic_rate = 0.2;
